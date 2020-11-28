@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index , name = "index" ),
     path('customers/' , include('app1.urls')),
-    path('<int:driver/', views.detail , name='detail'),
+    path('hello', views.detail , name='detail'),
 ]

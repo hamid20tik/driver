@@ -9,5 +9,5 @@ def index(request):
 def customer(request):
     return HttpResponse("start a first page")
 
-def detail(request,driver):
-    return HttpResponse("this is a customer page %s"% driver)
+def detail(request):
+    return HttpResponse("this is a customer page ")
