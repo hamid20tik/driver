@@ -2,5 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.customer , name = 'customers'),
+    path('', views.safar, name = 'safarpage'),
+    path('insert',views.insertsafar,name = "insertsafar"),
 ]

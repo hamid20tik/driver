@@ -4,10 +4,16 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("start a first page")
+    return HttpResponse("<h1>start a first page </h1>")
 
 def customer(request):
-    return HttpResponse("start a first page")
+    return HttpResponse("<h1>customers</h1>")
 
 def detail(request):
-    return HttpResponse("this is a customer page ")
+    return HttpResponse("<h1>details</h1> ")
+
+def safar(request):
+    return HttpResponse("<h1>this is a safar page </h1>")
+
+def insertsafar(request):
+    return HttpResponse("<h1>this is a insert safar page </h1>")
