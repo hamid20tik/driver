@@ -1,21 +1,33 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader,context
+from .models import safar
 # Create your views here.
 
 def add_driver(request):
-    return HttpResponse("<h1>add driver</h1> ")
+    t = loader.get_template('driver/add_driver.html')
+    context = {}
+    return HttpResponse(t.render(context,request))
 
 def end_travel(request):
-    return HttpResponse("<h1>End travel </h1>")
+    t = loader.get_template('driver/end_travel.html')
+    context = {}
+    return HttpResponse(t.render(context,request))
 
 def enter_travel(request):
-    return HttpResponse("<h1>enter travel </h1>")
+    t = loader.get_template('driver/enter_travel.html')
+    context = {}
+    return HttpResponse(t.render(context,request))
 
 def home_page(request):
-    return HttpResponse("<h1>index homepage </h1>")
-
+    t = loader.get_template('driver/index.html')
+    context = {}
+    return HttpResponse(t.render(context,request))
 def login_page(request):
-    return HttpResponse("<h1>login </h1>")
-
+    t = loader.get_template('driver/login.html')
+    context = {}
+    return HttpResponse(t.render(context, request))
 def report_page(request):
-    return HttpResponse("<h1>report travel </h1>")
+    t = loader.get_template('driver/report.html')
+    context = {}
+    return HttpResponse(t.render(context,request))
