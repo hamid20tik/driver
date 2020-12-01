@@ -5,29 +5,19 @@ from .models import safar
 # Create your views here.
 
 def add_driver(request):
-    t = loader.get_template('driver/add_driver.html')
-    context = {}
-    return HttpResponse(t.render(context,request))
+    return render(request,'add_driver.html')
 
 def end_travel(request):
-    t = loader.get_template('driver/end_travel.html')
-    context = {}
-    return HttpResponse(t.render(context,request))
+    return render(request,'end_travel.html')
 
 def enter_travel(request):
-    t = loader.get_template('driver/enter_travel.html')
-    context = {}
-    return HttpResponse(t.render(context,request))
+    return render(request,'enter_travel.html')
 
 def home_page(request):
-    t = loader.get_template('driver/index.html')
-    context = {}
-    return HttpResponse(t.render(context,request))
+    return render(request,'index.html')
+
 def login_page(request):
-    t = loader.get_template('driver/login.html')
-    context = {}
-    return HttpResponse(t.render(context, request))
+    return render(request,'login.html')
+
 def report_page(request):
-    t = loader.get_template('driver/report.html')
-    context = {}
-    return HttpResponse(t.render(context,request))
+    return render(request,'report.html')
