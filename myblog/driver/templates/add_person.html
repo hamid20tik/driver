@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add-person</title>
+</head>
+<body>
+{% extends 'index.html' %}
+{% block content %}
+<form class="form-signin" method="POST" action="{% url 'add_person' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group w-25 col-lg-4" style="margin: auto"> <h1>افزودن کارمندان </h1></div>
+    <br/>
+    <div class="form-group w-25 col-lg-4" style="margin: auto" >
+     : نام کارمند را وارد کنید<input type="username" name="name" id="name" class="form-control text-center"  placeholder="نام" required autofocus>
+    </div>
+    <br/>
+    <div class="form-group w-25 col-lg-4" style="margin: auto" >
+     : نام خانوادگی کارمند را وارد کنید <input type="username" name="fname" id="fname" class="form-control text-center"  placeholder="نام خانوادگی" required autofocus>
+    </div>
+    <br/>
+    <div class="form-group w-25 col-lg-4" style="margin: auto" >
+     : کد پرسنلی کارمند را وارد کنید <input type="username" name="codeperson" id="codeperson" class="form-control text-center"  placeholder="کد پرسنلی کارمند" required autofocus>
+    </div>
+    <br/>
+    {% if error %}
+        <div class="alert alert-danger col-lg-4 " style="margin: auto" role="alert">{{error}}</div>
+    {% endif %}
+    <div class="form-group w-25" style="margin: auto">
+      <button class="btn btn-lg btn-primary btn-block" type="submit" >ثبت اطلاعات </button>
+		</div>
+    <div class="alert">
+
+</div>
+</form>
+{% endblock %}
+
+
+</body>
+</html>

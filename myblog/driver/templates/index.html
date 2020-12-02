@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css" integrity="sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If" crossorigin="anonymous">
 <body>
 {% load static %}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
     <img src="{% static 'user.png' %}" class="d-inline-block alighn-top"/>
@@ -17,23 +18,33 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">صفحه اصلی <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'home_page' %}">صفحه اصلی <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">دیدن سفر های جاری</a>
+        <a class="nav-link" href="{% url 'report_page' %}">دیدن سفر های جاری</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="#">ثبت سفر</a>
+        <a class="nav-link" href="{% url 'enter_travel' %}">ثبت سفر</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="#">ثبت بازگشت راننده</a>
+        <a class="nav-link" href="{% url 'end_travel' %}">ثبت بازگشت راننده</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="#">افزودن راننده</a>
+        <a class="nav-link" href="{% url 'add_driver' %}">افزودن راننده</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'add_person' %}">افزودن کارمندان</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="#">خروج</a>
+          {% if user.is_authenticated %}
+        <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">خروج</a>
+          <form id = 'logout' method="POST" action="{% url 'logout' %}">
+            {% csrf_token%}
+            <input type="hidden"/>
+          </form>
+          {% endif %}
       </li>
+      </ul>
 <!--      <li class="nav-item dropdown">-->
 <!--        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
 <!--          Dropdown-->
@@ -54,7 +65,8 @@
 <!--      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
 <!--      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
 <!--    </form>-->
-  </div>
+
+</div>
 </nav>
 </br>
 {% block content %}
