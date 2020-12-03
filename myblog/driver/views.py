@@ -68,4 +68,5 @@ def add_person(request):
 
 @login_required
 def report_page(request):
-    return render(request,'report.html')
+    obj = safar.objects.all()
+    return render(request,'report.html', {'rep_safar':obj})
