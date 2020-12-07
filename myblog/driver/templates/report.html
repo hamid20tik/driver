@@ -7,9 +7,64 @@
 <body>
 {%extends 'index.html'%}
 {% block content %}
-<div>
-    {% for sa in rep_safar %}<a href="{% url 'enter_travel'  %}" ><p >{{sa.driver}}</p></a>
-    <p>{{sa.person}}</p>
+<div><h1>سفر های در حال انجام</h1> </div>
+    <div class="container ">
+
+        <div class="row">
+            <div class="col">
+                <h5>  زمان شروع سفر</h5>
+            </div>
+            <div class="col">
+                <h5>مقصد</h5>
+            </div>
+            <div class="col">
+                <h5>مبدا</h5>
+            </div>
+            <div class="col">
+                 <h5>ماموریت</h5>
+            </div>
+            <div class="col">
+                 <h5>کارمند</h5>
+            </div>
+            <div class="col">
+                 <h5>راننده</h5>
+            </div>
+            <div class="col">
+                 <h5>ردیف</h5>
+            </div>
+
+    </div>
+    {% for sa in rep_safar %}
+    <div class="container ">
+        <a href="{% url 'end_travel' %}" method="POST">
+        <div class="row">
+            <div class="col">
+                {{sa.datetime_start}}
+            </div>
+            <div class="col">
+                {{sa.maghsad}}
+            </div>
+            <div class="col">
+                {{sa.mabda}}
+            </div>
+            <div class="col">
+                {{sa.mamoriat}}
+            </div>
+            <div class="col">
+                {{sa.person}}
+            </div>
+            <div class="col">
+                {{sa.driver}}
+            </div>
+            <div class="col">
+                {{sa.id}}
+            </div>
+
+        </div>
+            </a>
+     <a href="{% url 'enter_travel' %}" ><p ></p></a>
+    <p></p>
+    </div>
     {% endfor %}
 </div>
 {% endblock %}

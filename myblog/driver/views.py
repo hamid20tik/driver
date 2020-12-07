@@ -72,5 +72,7 @@ def add_person(request):
 
 @login_required
 def report_page(request):
+    if request.method=="POST":
+
     obj = safar.objects.all()
     return render(request,'report.html', {'rep_safar':obj})
