@@ -45,9 +45,64 @@
     <div class="form-group w-25" style="margin: auto">
       <button class="btn btn-lg btn-primary btn-block" type="submit" >ثبت اطلاعات </button>
 		</div>
-    <div class="alert">
+    <br/>
+    <div class="form-group w-25" style="margin: auto">
+        <h3 >لیست رانندگان </h3>
+        </div>
 
-</div>
+        <div class="container" >
+            <div class="row">
+                <div class="col">
+                   پلاک
+                </div>
+                <div class="col">
+                   مدل ماشین
+                </div>
+                <div class="col">
+                   نام ماشین
+                </div>
+                <div class="col">
+                   شماره موبایل
+                </div>
+                <div class="col-3">
+                   نام و نام خانوادگی
+                </div>
+                <div class="col">
+                   کد ملی
+                </div>
+                <div class="col">
+                   ردیف
+                </div>
+            </div>
+        </div>
+            {% for sa in rep_driver %}
+    <br/>
+        <div class="container ">
+            <div class="row">
+                <div class="col">
+                   {{sa.car_pelak}}
+                </div>
+                <div class="col">
+                   {{sa.car_model}}
+                </div>
+                <div class="col">
+                   {{sa.car_name}}
+                </div>
+                <div class="col">
+                   {{sa.phone}}
+                </div>
+                <div class="col-3">
+                   {{sa.name}} {{sa.family}}
+                </div>
+                <div class="col">
+                   {{sa.codemeli}}
+                </div>
+                <div class="col">
+                   {{sa.id}}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 </form>
 {% endblock %}
 

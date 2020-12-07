@@ -20,11 +20,12 @@ def add_driver(request):
             dri.car_model = request.POST['car_model']
             dri.car_pelak = request.POST['car_pelak']
             dri.save()
-            return redirect('home_page')
+            return redirect('add_driver')
         else:
             return render(request,'add_driver.html',{'error':'تمامی مقادیر را به درستی وارد کنید '})
     else:
-        return render(request,'add_driver.html')
+        obj = driver.objects.all()
+        return render(request,'add_driver.html' , {'rep_driver':obj})
 @login_required
 def end_travel(request):
     return render(request,'end_travel.html')
@@ -66,6 +67,7 @@ def add_person(request):
     else:
         obj = person.objects.all()
         return render(request,'add_person.html',{'rep_person':obj})
+
 
 
 @login_required
