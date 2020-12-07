@@ -60,11 +60,13 @@ def add_person(request):
             per.family = request.POST['fname']
             per.person_code = request.POST['codeperson']
             per.save()
-            return redirect('home_page')
+            return redirect('add_person')
         else:
             return render(request,'add_person.html',{'error':'تمامی مقادیر را به درستی وارد کنید '})
     else:
-        return render(request,'add_person.html')
+        obj = person.objects.all()
+        return render(request,'add_person.html',{'rep_person':obj})
+
 
 @login_required
 def report_page(request):

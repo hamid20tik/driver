@@ -29,7 +29,39 @@
     <div class="form-group w-25" style="margin: auto">
       <button class="btn btn-lg btn-primary btn-block" type="submit" >ثبت اطلاعات </button>
 		</div>
-    <div class="alert">
+        <p></p>
+    <div class="form-group w-25" style="margin: auto">
+        <h3 >لیست کارمندادن </h3>
+        </div>
+
+        <div class="container form-group w-25" style="margin: auto;">
+            <div class="row">
+                <div class="col-5">
+                   نام و نام خانوادگی
+                </div>
+                <div class="col">
+                   کد پرسنلی
+                </div>
+                <div class="col">
+                   ردیف
+                </div>
+            </div>
+        </div>
+            {% for sa in rep_person %}
+        <div class="container form-group w-25" style="margin: auto;">
+            <div class="row">
+                <div class="col-5">
+                   {{sa.name}} {{sa.family}}
+                </div>
+                <div class="col">
+                   {{sa.person_code}}
+                </div>
+                <div class="col">
+                   {{sa.id}}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 
 </div>
 </form>
