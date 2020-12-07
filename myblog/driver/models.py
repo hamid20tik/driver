@@ -49,4 +49,18 @@ class safar(models.Model):
                                                                 self.datetime_def, self.datetime_now)
 #
 
-
+class safarbackup(models.Model):
+    driver = models.ForeignKey(driver, on_delete=models.CASCADE)
+    person = models.ForeignKey(person, on_delete=models.CASCADE)
+    mamoriat = models.CharField(max_length=50)
+    maghsad = models.CharField(max_length=300)
+    mabda = models.CharField(max_length=300)
+    datetime_start = models.DateTimeField(default=timezone.now)
+    datetime_stop = models.DateTimeField(default=timezone.now)
+    datetime_def = models.DateTimeField(default=timezone.now)
+    datetime_now = models.DateTimeField(default=timezone.now)
+    def __str__(self):
+        return '{0} {1} {2} {3} {4} {5} {6} {7} {8} '.format(self.driver, self.person,
+                                                                self.mamoriat, self.maghsad, self.mabda,
+                                                                self.datetime_start, self.datetime_stop,
+                                                                self.datetime_def, self.datetime_now)
