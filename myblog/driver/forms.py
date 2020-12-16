@@ -18,4 +18,4 @@ class safarform(forms.ModelForm):
 
     class Meta:
         model = safar
-        fields = ['driver','person','mamoriat','mabda','maghsad',]
+        fields = ['driver','person','mamoriat','mabda','maghsad']

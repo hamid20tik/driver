@@ -16,8 +16,7 @@ class driver(models.Model):
     car_pelak = models.CharField(max_length=8)
 
     def __str__(self):
-        return '{} {} {} {} {} {} {}'.format(self.name, self.family, self.codemeli, self.phone, self.car_name,
-                                             self.car_model, self.car_pelak)
+        return '{} {} {} {}'.format(self.name, self.family, self.phone, self.car_name)
 
 
 class person(models.Model):
@@ -26,7 +25,7 @@ class person(models.Model):
     person_code = models.IntegerField(max_length=8)
 
     def __str__(self):
-        return '{} {} {}'.format(self.name, self.family, self.person_code)
+        return '{} {}'.format(self.name, self.family)
 
 
 class safar(models.Model):
