@@ -2,12 +2,144 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>enter-travel</title>
+    <title>ثبت سفر</title>
 </head>
 <body>
 {%extends 'index.html'%}
 {% block content %}
-enter travel
+<form class="form-signin" method="POST" action="{% url 'enter_travel' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group w-25 col-lg-4" style="margin: auto"> <h1>ثبت سفر </h1></div>
+    <br/>
+    <div class="form-group w-25 col-lg-4" style="margin: auto">
+    </div>
+
+    <div class="form-group w-25 col-lg-3" style="margin: auto">
+        : راننده را انتخاب کنید
+        {{form.driver}}
+    </div>
+    <br/>
+    <div class="form-group w-25 col-lg-4" style="margin: auto">
+        : کارمند را انتخاب کنید
+        <br/>
+        {{form.person}}
+    </div>
+    <br/>
+    <div class="form-group w-25 col-lg-4" style="margin: auto">
+        : ماموریت را وارد کنید
+        <br/>
+        {{form.mamoriat}}
+    </div>
+    <div class="form-group w-25 col-lg-4" style="margin: auto">
+        : مبدا را وارد کنید
+        <br/>
+        {{form.mabda}}
+    </div>
+    <div class="form-group w-25 col-lg-4" style="margin: auto">
+        : مقصد را وارد کنید
+        <br/>
+        {{form.maghsad}}
+    </div>
+    <div class="form-group w-25 col-lg-4" style="margin: auto">
+        : زمان حرکت را وارد کنید
+        <br/>
+        {{form.datetime_start}}
+    </div>
+<!--    <div class="form-group w-25 col-lg-4" style="margin: auto">-->
+<!--        : زمان توقف را وارد کنید-->
+<!--        <br/>-->
+<!--        {{form.datetime_stop}}-->
+<!--    </div>-->
+
+
+
+<!--    <div class="form-group w-25 col-lg-4" style="margin: auto" >-->
+<!--     : کارمند را انتخاب کنید <input type="person" name="person" id="person" class="form-control text-center"  placeholder="نام خانوادگی" required autofocus>-->
+<!--    </div>-->
+<!--    <br/>-->
+<!--    <div class="form-group w-25 col-lg-4" style="margin: auto" >-->
+<!--     : نوع ماموریت را انتخاب کنید <input type="mamoriat" name="mamoriat" id="mamoriat" class="form-control text-center"  placeholder="ماموریت" required autofocus>-->
+<!--    </div>-->
+<!--    <br/>-->
+<!--    <div class="form-group w-25 col-lg-4" style="margin: auto" >-->
+<!--     : مقصد را وارد کنید <input type="maghsad" name="maghsad" id="maghsad" class="form-control text-center"  placeholder="مقصد" required autofocus>-->
+<!--    </div>-->
+<!--    <br/>-->
+<!--    <div class="form-group w-25 col-lg-4" style="margin: auto" >-->
+<!--     : مبدا را وارد کنید <input type="mabda" name="mabda" id="mabda" class="form-control text-center"  placeholder="مبدا" required autofocus>-->
+<!--    </div>-->
+<!--    <br/>-->
+    {% if error %}
+        <div class="alert alert-danger col-lg-4 " style="margin: auto" role="alert">{{error}}</div>
+    {% endif %}
+    <br/>
+    <div class="form-group w-25" style="margin: auto">
+      <button class="btn btn-lg btn-primary btn-block" type="submit" >ثبت سفر </button>
+    </div>
+        <br/>
+    <br/>
+    <div class="form-group w-25" style="margin: auto">
+        <h3 >مشاهده سفر ها </h3>
+    </div>
+    <br/>
+
+    <div  style="margin: auto;">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h5>  زمان شروع سفر</h5>
+                </div>
+                <div class="col">
+                    <h5>مقصد</h5>
+                </div>
+                <div class="col">
+                    <h5>مبدا</h5>
+                </div>
+                <div class="col">
+                    <h5>ماموریت</h5>
+                </div>
+                <div class="col">
+                    <h5>کارمند</h5>
+                </div>
+                <div class="col">
+                    <h5>راننده</h5>
+                </div>
+                <div class="col">
+                    <h5>ردیف</h5>
+                </div>
+            </div>
+        </div>
+            {% for sa in rep_travel %}
+            <br/>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    {{sa.datetime_start}}
+                </div>
+                <div class="col">
+                    {{sa.maghsad}}
+                </div>
+                <div class="col">
+                    {{sa.mabda}}
+                </div>
+                <div class="col">
+                    {{sa.mamoriat}}
+                </div>
+                <div class="col">
+                    {{sa.person}}
+                </div>
+                <div class="col">
+                    {{sa.driver}}
+                </div>
+                <div class="col">
+                    {{sa.id}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</form>
 {% endblock %}
 </body>
 </html>

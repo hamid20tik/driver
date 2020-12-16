@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from .models import driver,person,safar
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
+from django.utils import timezone
+from .forms import safarform
 from django.http import HttpResponse
 from django.template import loader,context
 from .models import safar
@@ -31,7 +33,29 @@ def end_travel(request):
     return render(request,'end_travel.html')
 @login_required
 def enter_travel(request):
-    return render(request, 'enter_travel.html')
+    form = safarform()
+    obj=safar.objects.all()
+    objd = driver.objects.all()
+    objp = person.objects.all()
+    if request.method == 'POST':
+        form = safarform(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('enter_travel')
+        # if request.POST['driver'] and request.POST['person'] and request.POST['mamoriat'] and request.POST['maghsad'] and request.POST['mabda']:
+        #
+        #     saf = safar()
+        #     saf.driver = request.POST.get('driver')
+        #     saf.person = request.POST.get('person')
+        #     saf.mamoriat = request.POST['mamoriat']
+        #     saf.maghsad = request.POST['maghsad']
+        #     saf.mabda = request.POST['mabda']
+        #     saf.datetime_start = timezone.now
+        #     saf.save()
+        #     return redirect('enter_travel')
+        # else:
+        #     return render(request,'enter_travel.html',{'error':'تمامی مقادیر را به درستی وارد کنید '})
+    return render(request, 'enter_travel.html',{'rep_travel':obj,'rep_dri':objd,'rep_per':objp,'form':form})
 @login_required
 def home_page(request):
     return render(request, 'index.html')
@@ -67,7 +91,6 @@ def add_person(request):
     else:
         obj = person.objects.all()
         return render(request,'add_person.html',{'rep_person':obj})
-
 
 
 @login_required
