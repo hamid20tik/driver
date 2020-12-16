@@ -2,6 +2,9 @@ from django import forms
 from .models import safar,driver,person
 
 class safarform(forms.ModelForm):
+    driver = forms.Select(attrs={'class': 'form-control',
+               })
+
     mabda = forms.CharField(widget=forms.TextInput(
         attrs={'class':'form-control',
         }
@@ -14,6 +17,7 @@ class safarform(forms.ModelForm):
         attrs={'class': 'form-control',
                }
     ))
+
 
 
     class Meta:
