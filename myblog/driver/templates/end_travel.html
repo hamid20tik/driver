@@ -5,9 +5,19 @@
     <title>end-travel</title>
 </head>
 <body>
-{%extends 'index.html'%}
+{% extends 'index.html' %}
 {% block content %}
-end-travel
+<div><h1>ثبت بازگشت راننده</h1> </div>
+<form class="form-signin" method="POST" action="{% url 'update_travel' rep.id %}" enctype="multipart/form-data">
+<div class="container ">
+{% csrf_token %}
+
+    {{form}}
+    <div class="form-group w-25" style="margin: auto">
+    <button class="btn btn-lg btn-primary btn-block" type="submit" >ثبت سفر </button>
+    </div>
+</div>
+</form>
 {% endblock %}
 </body>
 </html>

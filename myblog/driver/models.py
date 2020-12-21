@@ -42,10 +42,10 @@ class safar(models.Model):
     # def create(self):
     #     self.save()
     def __str__(self):
-        return '{0} {1} {2} {3} {4} {5} {6} {7} {8} '.format(self.driver, self.person,
+        return '{0} {1} {2} {3} {4} {5} {6} {7} {8}'.format(self.driver, self.person,
                                                                 self.mamoriat, self.maghsad, self.mabda,
                                                                 self.datetime_start, self.datetime_stop,
-                                                                self.datetime_def, self.datetime_now)
+                                                                self.datetime_def, self.datetime_now,)
 #
 
 class safarbackup(models.Model):

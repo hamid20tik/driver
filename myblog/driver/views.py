@@ -1,8 +1,9 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.models import User
-from .models import driver,person,safar
+from .models import driver,person
+
 from django.contrib.auth.decorators import login_required
-from django.contrib import auth
+from django.contrib import auth,messages
 from django.utils import timezone
 from .forms import safarform
 from django.http import HttpResponse
@@ -27,14 +28,24 @@ def add_driver(request):
             return render(request,'add_driver.html',{'error':'تمامی مقادیر را به درستی وارد کنید '})
     else:
         obj = driver.objects.all()
-        return render(request,'add_driver.html' , {'rep_driver':obj})
+        return render(request, 'add_driver.html', {'rep_driver':obj})
+
 @login_required
-def end_travel(request):
-    return render(request,'end_travel.html')
+def update_travel(request,pk):
+    obj = safar.objects.get(id=pk)
+    form = safarform(instance=obj)
+    if request.method == 'POST':
+        form = safarform(request.POST , instance=obj)
+        if form.is_valid():
+            form.save()
+            return redirect('report_page')
+    context={'form': form,'rep':obj}
+    return render(request, 'end_travel.html', context)
+
 @login_required
 def enter_travel(request):
     form = safarform()
-    obj=safar.objects.all()
+    obj = safar.objects.all()
     objd = driver.objects.all()
     objp = person.objects.all()
     if request.method == 'POST':
@@ -95,5 +106,5 @@ def add_person(request):
 
 @login_required
 def report_page(request):
-    obj = safar.objects.all()
-    return render(request,'report.html', {'rep_safar':obj})
+    result = safar.objects.all()
+    return render(request,'report.html', {'rep_safar':result})

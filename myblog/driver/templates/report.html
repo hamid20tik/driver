@@ -36,7 +36,7 @@
     </div>
     {% for sa in rep_safar %}
     <div class="container ">
-        <a href="{% url 'end_travel' %}" method="POST">
+        <a href="{% url 'update_travel' sa.id %}" >
         <div class="row">
             <div class="col">
                 {{sa.datetime_start}}
@@ -62,7 +62,7 @@
 
         </div>
             </a>
-     <a href="{% url 'enter_travel' %}" ><p ></p></a>
+    <hr/>
     <p></p>
     </div>
     {% endfor %}
